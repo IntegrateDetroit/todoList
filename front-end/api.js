@@ -16,14 +16,10 @@ var request = {
         })
     .then(
         function(data) {
-          console.log("DATA = ", data);
-          console.log(data.status);
-
           if (data.status === 201) {
             data.json().then(function (body) {
               successCallback(currId, body.title);
             });
-
           }
           else if (data.status === 304) {
           }
@@ -31,8 +27,7 @@ var request = {
         function(error) {
           console.log("ERROR = ", error);
         });
-
-   }
+      }
   }
 
 var redirect = { redirectToPage: function (url) {
@@ -40,7 +35,6 @@ var redirect = { redirectToPage: function (url) {
 }}
 
 var userrequest = { post: function (data, url){
-
   fetch(
     url,
     {
@@ -62,7 +56,7 @@ var userrequest = { post: function (data, url){
         alert('A problem occured, Please try again later.');
       }
     })
-}
+  }
 }
 
 
