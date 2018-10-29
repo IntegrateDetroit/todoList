@@ -8,7 +8,7 @@ spring:
     password:
     driverClassName: org.sqlite.JDBC
   jpa:
-    database-platform: com.integrate.todo.db.SQLiteDialect
+    database-platform: io.integral.todo.db.SQLiteDialect
     hibernate:
       ddl-auto: create-drop
     properties:
