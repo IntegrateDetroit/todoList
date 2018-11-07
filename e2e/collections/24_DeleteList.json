@@ -1,16 +1,15 @@
 {
 	"info": {
-		"_postman_id": "0fcb4477-381a-4c30-8b37-792e07363b00",
+		"_postman_id": "fbc7f374-7388-4f46-add7-94f257501f86",
 		"name": "24 Delete List",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "List Tests",
-			"description": null,
 			"item": [
 				{
-					"name": "Create List One",
+					"name": "24 Create List One",
 					"event": [
 						{
 							"listen": "test",
@@ -66,7 +65,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete List One",
+					"name": "24 Delete List One",
 					"event": [
 						{
 							"listen": "test",
