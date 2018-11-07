@@ -8,7 +8,8 @@ function printUsage(){
 
 const runTestFor = (collection, env) => {
   console.log(`Running test: ${collection} ${env}`)
-
+  console.log(collection)
+  console.log(env)
   if(!(collection && env)) {
     printUsage();
     process.exit(1);
@@ -41,15 +42,17 @@ const runTestFor = (collection, env) => {
       process.exit(1);
     }
   });
-
-  newman.wa
   
 }
 
 let text = fs.readFileSync( './testPairs.txt', { encoding: 'UTF-8' } )
 
-const pairs = text.split(";\n");
-
+let pairs;
+if(os.platform == "darwin"){
+  pairs = text.split(";\n");
+}else{
+  pairs = text.split(";\r\n")
+}
 
 pairs.forEach(pair => {
   let [ collection, environment ] = pair.split( ', ' )
