@@ -1,39 +1,34 @@
 {
-  "id": "7248cc74-32f6-4839-ab56-b8b066a595f1",
-  "name": "9_Edit_Item_vars",
-  "values": [
-    {
-      "key": "listID",
-      "value": "9",
-      "enabled": true,
-      "type": "text"
-    },
-    {
-      "key": "description",
-      "value": "This is a sample description",
-      "enabled": true,
-      "type": "text"
-    },
-    {
-      "key": "itemID",
-      "value": 7,
-      "enabled": true,
-      "type": "text"
-    },
-    {
-      "key": "newDescription",
-      "value": "New Description",
-      "enabled": true,
-      "type": "text"
-    },
-    {
-      "key": "dueDate",
-      "value": 1530504000000,
-      "enabled": true,
-      "type": "text"
-    }
-  ],
-  "_postman_variable_scope": "environment",
-  "_postman_exported_at": "2018-07-06T23:06:44.345Z",
-  "_postman_exported_using": "Postman/6.1.4"
+	"id": "780c9d9a-3460-46e4-ae4d-f657d25398b0",
+	"name": "9_Edit_Item_vars",
+	"values": [
+		{
+			"key": "listID",
+			"value": 9,
+			"enabled": true
+		},
+		{
+			"key": "description",
+			"value": "This is a sample description",
+			"enabled": true
+		},
+		{
+			"key": "itemID",
+			"value": 86,
+			"enabled": true
+		},
+		{
+			"key": "newDescription",
+			"value": "New Description",
+			"enabled": true
+		},
+		{
+			"key": "dueDate",
+			"value": 1530504000000,
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2018-11-07T18:38:05.334Z",
+	"_postman_exported_using": "Postman/6.4.4"
 }

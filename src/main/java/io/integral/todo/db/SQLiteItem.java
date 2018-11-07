@@ -75,13 +75,11 @@ public class SQLiteItem implements DBWrapperItem {
         int itemID = item.getItemID();
         int newListID = item.getListID();
         String newDescription = item.getDescription();
-        long dueDate = item.getDueDate();
-        int status = item.getStatus();
 
         try {
             Connection connection = dataSource.getConnection();
             Statement statement = connection.createStatement();
-            int updateCount = statement.executeUpdate("UPDATE Item SET LIST_ID = '" + newListID + "', DESCRIPTION = '"+ newDescription +"', DUE_DATE = '" + dueDate + "', STATUS = '" + status + "' WHERE ID = " + itemID + ";" );
+            int updateCount = statement.executeUpdate("UPDATE Item SET LIST_ID = '" + newListID + "', DESCRIPTION = '"+ newDescription + "' WHERE ID = " + itemID + ";" );
             if (updateCount == 0){
                 item.setDescription("");
                 item.setItemID(-1);

@@ -50,8 +50,6 @@ public class ItemController {
         inputItem.setItemID((int)newItem.get("itemID"));
         inputItem.setListID((int)newItem.get("listID"));
         inputItem.setDescription((String)newItem.get("description"));
-        inputItem.setDueDate((long)newItem.get("dueDate"));
-        inputItem.setStatus((int)newItem.get("status"));
 
         Item updatedItem = this.service.updateItem(inputItem);
         if (updatedItem.getItemID() == -1 ) {

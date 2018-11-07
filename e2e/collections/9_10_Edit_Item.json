@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "851f0949-1e2c-4077-8404-b05543d7b3a1",
+		"_postman_id": "0a068675-2315-49a6-99a8-55a47bde91d4",
 		"name": "9_10_Edit_Item",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -80,7 +80,6 @@
 					"listen": "test",
 					"script": {
 						"id": "504c884a-c843-4d98-8cb0-2c64453a3778",
-						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -91,16 +90,15 @@
 							"    var newDescription = pm.environment.get(\"newDescription\");",
 							"    var listID = parseInt(pm.environment.get(\"listID\"));",
 							"    var itemID = parseInt(pm.environment.get(\"itemID\"));",
-							"    var dueDate = parseInt(pm.environment.get(\"dueDate\"));",
-							"    ",
+							"",
 							"    var jsonData = pm.response.json();",
 							"    ",
 							"    pm.expect(jsonData.listID).to.equal(listID);",
 							"    pm.expect(jsonData.description).to.equal(newDescription);",
-							"    pm.expect(jsonData.dueDate).to.equal(dueDate);",
 							"    pm.expect(jsonData.itemID).to.equal(itemID);",
 							"});"
-						]
+						],
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -114,7 +112,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"itemID\":{{itemID}},\n\t\"listID\": {{listID}},\n\t\"description\": \"{{newDescription}}\",\n\t\"dueDate\": {{dueDate}},\n\t\"status\": 0\n}"
+					"raw": "{\n\t\"itemID\":{{itemID}},\n\t\"listID\": {{listID}},\n\t\"description\": \"{{newDescription}}\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/list/item",

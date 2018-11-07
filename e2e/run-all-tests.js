@@ -16,6 +16,7 @@ const runTestFor = (collection, env) => {
   const runConfig = {
     collection: './collections/' + collection,
     environment: './env/' + env,
+    delayRequest: 2000,
     reporters: 'cli'
   };
   
@@ -30,6 +31,7 @@ const runTestFor = (collection, env) => {
     }
   });
 
+  newman.wa
   
 }
 
@@ -37,15 +39,10 @@ let text = fs.readFileSync( './testPairs.txt', { encoding: 'UTF-8' } )
 
 const pairs = text.split(";\n");
 
-let run = async () => {
-  pairs.forEach(pair => {
-    let [ collection, environment ] = pair.split( ', ' )
-    environment = environment.replace( ';', '' );
 
-    runTestFor( collection, environment );
-  });
-}
+pairs.forEach(pair => {
+  let [ collection, environment ] = pair.split( ', ' )
+  environment = environment.replace( ';', '' );
 
-(async () => {
-  await run();
-})()
+  runTestFor( collection, environment );
+});

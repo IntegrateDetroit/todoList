@@ -42,7 +42,7 @@ public class DBUtils {
         try {
             statement.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS User(" +
-                            "ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                            "ID INTEGER PRIMARY KEY, " +
                             "FIRST_NAME text NOT NULL, " +
                             "LAST_NAME text NOT NULL, " +
                             "EMAIL text NOT NULL UNIQUE , " +
@@ -59,7 +59,7 @@ public class DBUtils {
         try {
             statement.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS List(" +
-                            "ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                            "ID INTEGER PRIMARY KEY, " +
                             "USER_ID INTEGER not null, " +
                             "LIST_NAME varchar(30) not null, " +
                             "ARCHIVE_STATUS varchar(1), " +
@@ -78,7 +78,7 @@ public class DBUtils {
         try {
             statement.executeUpdate(
                     "CREATE TABLE IF NOT EXISTS Item(" +
-                            "ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                            "ID INTEGER PRIMARY KEY, " +
                             "LIST_ID INTEGER not null, " +
                             "DESCRIPTION TEXT not null, " +
                             "DUE_DATE NUMERIC , " +
