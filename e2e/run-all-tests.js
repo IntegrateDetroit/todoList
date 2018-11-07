@@ -1,24 +1,35 @@
 const newman = require('newman');
-const fs = require( 'fs' )
+const fs = require('fs');
+const os = require('os');
 
 function printUsage(){
   console.log('USAGE: node test-runner.js <collection-name> <environment-name>');
 }
 
 const runTestFor = (collection, env) => {
-  console.log( `we r running da test! ${collection} ${env}` )
+  console.log(`Running test: ${collection} ${env}`)
 
   if(!(collection && env)) {
     printUsage();
     process.exit(1);
   }
-  
-  const runConfig = {
-    collection: './collections/' + collection,
-    environment: './env/' + env,
-    delayRequest: 2000,
-    reporters: 'cli'
-  };
+  let runConfig;
+  console.log("PLATFORM " + os.platform);
+  if (os.platform == 'darwin'){
+    runConfig = {
+      collection: './collections/' + collection,
+      environment: './env/' + env,
+      delayRequest: 2000,
+      reporters: 'cli'
+    };
+  } else {
+    runConfig = {
+      collection: '.\\collections\\' + collection,
+      environment: '.\\env\\' + env,
+      delayRequest: 2000,
+      reporters: 'cli'
+    }
+  }
   
   newman.run(runConfig, (err, summary, run) => {
     if (err) {
