@@ -3,3 +3,10 @@
   flex-flow: row nowrap; 
   justify-content: space-between;
 }
+
+.listCardTitle {
+  margin:auto;
+  width: 50%;
+  text-align:center;
+}
+
