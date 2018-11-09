@@ -1,5 +1,6 @@
 .gradle
 *.db
+todo 
 /build/
 !gradle/wrapper/gradle-wrapper.jar
 /front-end/node_modules/
