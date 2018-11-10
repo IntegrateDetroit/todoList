@@ -35,7 +35,6 @@
 					"listen": "test",
 					"script": {
 						"id": "54fe2779-eafc-4bbc-b597-dc99264be041",
-						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Status code is 201\", function () {",
 							"    pm.response.to.have.status(201);",
@@ -53,18 +52,19 @@
 							"    pm.expect(jsonData.description).to.equal(description);",
 							"    pm.expect(jsonData.dueDate).to.equal(dueDate);",
 							"});"
-						]
+						],
+						"type": "text/javascript"
 					}
 				},
 				{
 					"listen": "prerequest",
 					"script": {
 						"id": "2e7c722e-bd86-458e-b6aa-802d205dd9e2",
-						"type": "text/javascript",
 						"exec": [
 							"    var datein = new Date(\"Jul 2 2018\").getTime();",
 							"    pm.environment.set(\"dueDate\", datein );"
-						]
+						],
+						"type": "text/javascript"
 					}
 				}
 			],
