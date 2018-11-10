@@ -27,7 +27,35 @@ var request = {
         function(error) {
           console.log("ERROR = ", error);
         });
-      }
+      },
+      accountCreationPost: function (data, url, successCallback, failureCallback)
+      {
+        fetch(
+            url,
+            {
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data),
+              method: 'POST'
+            })
+        .then(
+            function(data) {
+              if (data.status === 201) {
+                console.log("ERROR = ", error)
+                data.json().then(function (body) {
+                  successCallback(currId, body.title);
+                });
+              }
+              else if (data.status === 304) {
+              }
+            },
+            function(error) {
+              console.log("ERROR = ", error);
+            });
+          }
+     
   }
 
 var redirect = { redirectToPage: function (url) {
@@ -49,7 +77,7 @@ var userrequest = { post: function (data, url){
       console.log(response)          
       //return response;
       if(response.status==201){
-        redirect.redirectToPage("index.html");
+        redirect.redirectToPage("login.html");
       }else if(response.status==204){
         alert('User already exists');
       }else{

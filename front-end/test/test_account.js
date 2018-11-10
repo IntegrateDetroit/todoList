@@ -39,11 +39,11 @@ QUnit.test("Missmatched passwords disables submit button", function(){
   });
 
   QUnit.test("Submit Button sends to database", function(){
-    var fname = "fname1";
-    var lname = "lname1";
+    var fname = "fname";
+    var lname = "lname";
     var eMail = "email1@email.com";
-    var pass1 = "password1";
-    var pass2 = "password2";
+    var pass1 = "passwordOne";
+    var pass2 = "passwordTwo";
     var expectedStatus = 201;
     
     document.getElementById("fname").value = fname;
@@ -80,9 +80,9 @@ QUnit.test("Missmatched passwords disables submit button", function(){
     
   });
 
-  QUnit.test("Status 201 redirects to index.html", function(assert){
+  QUnit.test("Status 201 redirects to login.html", function(assert){
 
-    var done = assert.async();
+    var done = assert.async();  
     var fname = "fname1";
     var lname = "lname1";
     var eMail = "email1@email.com123";
@@ -116,7 +116,7 @@ QUnit.test("Missmatched passwords disables submit button", function(){
   setTimeout(function() {
     console.log(stub2);
     equal(stub2.redirectToPage.calledOnce, true, "Redirect was called once");
-    equal(stub2.redirectToPage.args[0], "index.html", "Redirect was called with 'Index.html'");
+    equal(stub2.redirectToPage.args[0], "login.html", "Redirect was called with 'login.html'");
     stub1.restore();
     //stub2.restore();
     done();
