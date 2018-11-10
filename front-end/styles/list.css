@@ -10,3 +10,9 @@
   text-align:center;
 }
 
+h6[contenteditable=true]{
+
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 2em;
+  background-color: #e5ead6;
+}

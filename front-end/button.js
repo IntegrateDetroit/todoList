@@ -11,6 +11,7 @@ function cback(message) {
 window.onload = () => {
   initialize()
   const submitButton = document.querySelector("#createListButton")
+  
   submitButton.addEventListener('click', buttonHandler)
   // const input = document.querySelector('#titleInput');
 }

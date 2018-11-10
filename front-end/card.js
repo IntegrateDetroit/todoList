@@ -28,11 +28,16 @@ var card = {
     let cardTitle = document.createElement('h6')
     cardTitle.style['display'] = 'inline'
     cardTitle.innerText = newTitle
+    cardTitle.id = `title${currId}`
+
 
     let editTitleButton = document.createElement( 'button' )
     editTitleButton.style[ 'opacity' ] = 0.5
     editTitleButton.style[ 'padding-left' ] = '10px'
     editTitleButton.style[ 'padding-bottom' ] = '15px'
+    editTitleButton.id = `editTitleButton${currId}`
+
+    console.log('created editTitleButton')
 
     let titlePen = document.createElement( 'img' )
     titlePen.src = './resources/pen-solid.svg'
@@ -88,6 +93,34 @@ var card = {
       ( event ) => {
         alert( 'ouch!' )
       })
+
+    editTitleButton.addEventListener(
+      'click',
+      ( event ) => {
+        cardTitle.setAttribute(
+          "contenteditable", "true"
+        )
+
+        editTitleButton.style["display"]="none"
+        cardTitle.focus()
+
+      })
+
+    cardTitle.addEventListener(
+      'blur',
+      ( event ) => {
+        cardTitle.setAttribute(
+          "contenteditable", "false"
+        )
+
+        editTitleButton.style["display"]="inline"
+
+      }
+    )
+
+    
+
+
     const card = document.querySelector("#"+cardId);
     // card.addEventListener('click', function (e) {
     //   card.remove()

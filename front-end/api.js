@@ -18,6 +18,7 @@ var request = {
         function(data) {
           if (data.status === 201) {
             data.json().then(function (body) {
+              console.log("in the success case of fetch")
               successCallback(currId, body.title);
             });
           }
