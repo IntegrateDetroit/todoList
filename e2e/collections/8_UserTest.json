@@ -1,10 +1,66 @@
 {
 	"info": {
-		"_postman_id": "626d6b32-abae-4083-ae58-43965a4862cb",
+		"_postman_id": "22548131-b690-4752-9cad-2de8fdf19151",
 		"name": "8_User Tests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "Delete User One",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "39a45f75-4fa4-4f49-884d-1001778ca818",
+						"exec": [
+							"/*var _ = require(\"lodash\");",
+							"",
+							"pm.test(\"Status code is 410\", function () {",
+							"    pm.response.to.have.status(410);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Has properties\", function () {",
+							"    var expectedEmail = pm.environment.get(\"email_address\");",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.eMail).to.equal(expectedEmail);",
+							"    pm.expect(_.has(jsonData, \"userID\")).true;",
+							"    ",
+							"    pm.environment.unset(\"email_address\");",
+							"}); */"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\": \"{{first_name}}\" ,\n  \"lastName\": \"{{last_name}}\" ,\n  \"eMail\": \"{{email_address}}\" ,\n  \"paswordHash\": \"{{password}}\" ,\n  \"signupDate\": \"{{signup_date}}\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/email/{{email_address}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"email",
+						"{{email_address}}"
+					]
+				}
+			},
+			"response": []
+		},
 		{
 			"name": "Create User One",
 			"event": [
@@ -12,7 +68,6 @@
 					"listen": "test",
 					"script": {
 						"id": "fd677ea6-2a0a-4fb3-816b-32e82c9426f4",
-						"type": "text/javascript",
 						"exec": [
 							"var _ = require(\"lodash\");",
 							"",
@@ -29,7 +84,8 @@
 							"    ",
 							"    pm.environment.set(\"user_ID\", jsonData.userID)",
 							"});"
-						]
+						],
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -43,59 +99,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"firstName\": \"{{first_name}}\" ,\n  \"lastName\": \"{{last_name}}\" ,\n  \"eMail\": \"{{email_address}}\" ,\n  \"paswordHash\": \"{{password}}\" ,\n  \"signupDate\": \"{{signup_date}}\" ,\n  \"userId\": \"{{user_ID}}\"\n}"
-				},
-				"url": {
-					"raw": "http://localhost:8080/user",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"user"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create User Two",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "1d83e70c-3979-44f1-a18e-a291b79c6d58",
-						"type": "text/javascript",
-						"exec": [
-							"var _ = require(\"lodash\");",
-							"",
-							"pm.test(\"Status code is 201\", function () {",
-							"    pm.response.to.have.status(201);",
-							"});",
-							"",
-							"",
-							"pm.test(\"Has properties\", function () {",
-							"    var expectedEmail = pm.environment.get(\"email_address2\");",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.eMail).to.equal(expectedEmail);",
-							"    pm.expect(_.has(jsonData, \"userID\")).true;",
-							"});"
-						]
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"firstName\": \"{{first_name2}}\" ,\n  \"lastName\": \"{{last_name2}}\" ,\n  \"eMail\": \"{{email_address2}}\" ,\n  \"passwordHash\": \"{{password2a}}\" ,\n  \"signupDate\": \"{{signup_date2a}}\"\n\t\n}"
+					"raw": "{\n  \"firstName\": \"{{first_name}}\" ,\n  \"lastName\": \"{{last_name}}\" ,\n  \"eMail\": \"{{email_address}}\" ,\n  \"paswordHash\": \"{{password}}\" ,\n  \"signupDate\": \"{{signup_date}}\" \n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/user",
@@ -118,7 +122,6 @@
 					"listen": "test",
 					"script": {
 						"id": "981e7b3d-b74d-4c3f-b019-484a5206aace",
-						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -134,7 +137,8 @@
 							"    ",
 							"",
 							"});"
-						]
+						],
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -148,10 +152,10 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"firstName\": \"{{first_name}}\" ,\n  \"lastName\": \"{{last_name}}\" ,\n  \"eMail\": \"{{email_address}}\" ,\n  \"paswordHash\": \"{{password}}\" ,\n  \"signupDate\": \"{{signup_date}}\" ,\n  \"preference\": \"{{pref}}\"\n\t\n}"
+					"raw": ""
 				},
 				"url": {
-					"raw": "http://localhost:8080/user/email/zaara0001@example.com",
+					"raw": "http://localhost:8080/user/email/{{email_address}}",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -160,7 +164,7 @@
 					"path": [
 						"user",
 						"email",
-						"zaara0001@example.com"
+						"{{email_address}}"
 					]
 				}
 			},
@@ -173,7 +177,6 @@
 					"listen": "test",
 					"script": {
 						"id": "1569a06f-6d13-4fbf-9bc0-e620e29c111d",
-						"type": "text/javascript",
 						"exec": [
 							"var _ = require(\"lodash\");",
 							"",
@@ -182,7 +185,8 @@
 							"});",
 							"",
 							"    "
-						]
+						],
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -207,114 +211,6 @@
 					"port": "8080",
 					"path": [
 						"user"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete User One",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "39a45f75-4fa4-4f49-884d-1001778ca818",
-						"type": "text/javascript",
-						"exec": [
-							"var _ = require(\"lodash\");",
-							"",
-							"pm.test(\"Status code is 410\", function () {",
-							"    pm.response.to.have.status(410);",
-							"});",
-							"",
-							"/*",
-							"pm.test(\"Has properties\", function () {",
-							"    var expectedEmail = pm.environment.get(\"email_address\");",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.eMail).to.equal(expectedEmail);",
-							"    pm.expect(_.has(jsonData, \"userID\")).true;",
-							"});*/"
-						]
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"firstName\": \"{{first_name}}\" ,\n  \"lastName\": \"{{last_name}}\" ,\n  \"eMail\": \"{{email_address}}\" ,\n  \"paswordHash\": \"{{password}}\" ,\n  \"signupDate\": \"{{signup_date}}\"\n}"
-				},
-				"url": {
-					"raw": "http://localhost:8080/user/email/zaara0001@example.com",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"user",
-						"email",
-						"zaara0001@example.com"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete User Two",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "39a45f75-4fa4-4f49-884d-1001778ca818",
-						"type": "text/javascript",
-						"exec": [
-							"var _ = require(\"lodash\");",
-							"",
-							"pm.test(\"Status code is 410\", function () {",
-							"    pm.response.to.have.status(410);",
-							"});",
-							"",
-							"/*",
-							"pm.test(\"Has properties\", function () {",
-							"    var expectedEmail = pm.environment.get(\"email_address\");",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.eMail).to.equal(expectedEmail);",
-							"    pm.expect(_.has(jsonData, \"userID\")).true;",
-							"});*/"
-						]
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"firstName\": \"{{first_name2}}\" ,\n  \"lastName\": \"{{last_name2}}\" ,\n  \"eMail\": \"{{email_address2}}\" ,\n  \"paswordHash\": \"{{password2a}}\" ,\n  \"signupDate\": \"{{signup_date2a}}\"\n\t\n}"
-				},
-				"url": {
-					"raw": "http://localhost:8080/user/email/jamespublic%40example.com",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"user",
-						"email",
-						"jamespublic%40example.com"
 					]
 				}
 			},
