@@ -2,31 +2,92 @@
 var card = {
   createListCard: function (newCardId, newTitle) {
     let cardId = "list" + currId;
-    let todoCard = `
-    <div id="${cardId}" class="grid-x grid-padding-x">
-      <div class="large-6 large-pull-6 cell">
-       <div class="card card-tabs large-6">
-        <div class="card-divider">
+    
+    //create the card 
+    let todoCard = document.createElement('div')
+    todoCard.id = cardId 
+    todoCard.classList.add('grid-x', 'grid-padding-x')
 
-        <div class="listCardTitle">
-          <h6 style="display: inline;">${newTitle}</h6>
+    let todoCardOutterContainer = document.createElement('div')
+    todoCardOutterContainer.classList.add('large-6','large-pull-6','cell')
 
-          <button style="opacity: 0.5; padding-left: 10px; padding-bottom: 15px;">
-            <img src="./resources/pen-solid.svg" width="15px">
-          </button>
-          </div>
+    let todoCardInnerContainer = document.createElement('div')
+    todoCardInnerContainer.classList.add('card','card-tabs','large-6')
 
-          
-          <button href="#" data-close data-reveal-id="archiveModal" class="secondary button" id="archiveModal" type="submit">Archive List
-            <img src="./resources/iconmonstr-gear-1.svg">
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>`
+    todoCard.appendChild( todoCardOutterContainer )
+    todoCardOutterContainer.appendChild( todoCardInnerContainer )
+    
+    //create the title
+    //create the archive button
+    let cardDivider = document.createElement('div')
+    cardDivider.classList.add('card-divider')
 
-   
+    let titleContainer = document.createElement('div')
+    titleContainer.classList.add('listCardTitle')
+
+    let cardTitle = document.createElement('h6')
+    cardTitle.style['display'] = 'inline'
+    cardTitle.innerText = newTitle
+
+    let editTitleButton = document.createElement( 'button' )
+    editTitleButton.style[ 'opacity' ] = 0.5
+    editTitleButton.style[ 'padding-left' ] = '10px'
+    editTitleButton.style[ 'padding-bottom' ] = '15px'
+
+    let titlePen = document.createElement( 'img' )
+    titlePen.src = './resources/pen-solid.svg'
+    titlePen.style[ 'width' ] = '15px'
+
+    todoCardInnerContainer.appendChild( cardDivider )
+    cardDivider.appendChild( titleContainer )
+
+    titleContainer.appendChild( cardTitle )
+    titleContainer.appendChild( editTitleButton )
+
+    editTitleButton.appendChild( titlePen )
+
+    let archiveButton = document.createElement( 'button' )
+    archiveButton.setAttribute( 'href', '#' )
+    archiveButton.setAttribute( 'data-close', '' )
+    archiveButton.setAttribute( 'data-reveal-id', 'archiveModal' )
+    archiveButton.setAttribute( 'type', 'submit' )
+    archiveButton.classList.add('secondary', 'button')
+
+    archiveButton.id = 'archiveModal'
+    archiveButton.innerText = 'Archive List'
+
+    let archiveIcon = document.createElement( 'img' )
+    archiveIcon.src = './resources/iconmonstr-gear-1.svg'
+    
+    cardDivider.appendChild( archiveButton )
+    archiveButton.appendChild( archiveIcon )
+
+    //create container for the items
+    let itemContainer = document.createElement('div')
+
+    //create the add item button
+    let addItemContainer = document.createElement( 'div' )
+    addItemContainer.classList.add( 'grid-x', 'align-center' )
+
+    let addItemButton = document.createElement( 'button' )
+    
+    let addItemIcon = document.createElement( 'img' )
+    addItemIcon.src = './resources/plusSign.svg'
+
+    addItemButton.appendChild( addItemIcon )
+    addItemContainer.appendChild( addItemButton )
+
+    todoCardInnerContainer.appendChild( addItemContainer )
+    
     $("body").append(todoCard);
+    
+    // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+    addItemButton.addEventListener(
+      'click',
+      ( event ) => {
+        alert( 'ouch!' )
+      })
     const card = document.querySelector("#"+cardId);
     // card.addEventListener('click', function (e) {
     //   card.remove()
