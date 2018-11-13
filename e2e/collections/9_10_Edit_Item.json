@@ -1,10 +1,55 @@
 {
 	"info": {
-		"_postman_id": "0a068675-2315-49a6-99a8-55a47bde91d4",
+		"_postman_id": "ed720a35-6145-4f7a-ad56-0402b773ab1c",
 		"name": "9_10_Edit_Item",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
+		{
+			"name": "9 10 Create List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "08d184ac-5778-427f-ba6e-51a4d88e4c45",
+						"exec": [
+							"pm.test(\"Has properties\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(_.has(jsonData, \"listID\")).true;",
+							"    ",
+							"    pm.environment.set(\"listID\", jsonData.listID);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"{{title}}\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
 		{
 			"name": "9 10 Add item",
 			"event": [
@@ -12,7 +57,6 @@
 					"listen": "test",
 					"script": {
 						"id": "e654b816-2625-4d19-81ad-d3a15316c3ce",
-						"type": "text/javascript",
 						"exec": [
 							"pm.test(\"Status code is 201\", function () {",
 							"    pm.response.to.have.status(201);",
@@ -31,18 +75,19 @@
 							"    pm.environment.set(\"listID\",jsonData.listID);",
 							"    ",
 							"});"
-						]
+						],
+						"type": "text/javascript"
 					}
 				},
 				{
 					"listen": "prerequest",
 					"script": {
 						"id": "a09230f0-34c9-4096-9d7a-df4504de1343",
-						"type": "text/javascript",
 						"exec": [
 							"    var datein = new Date(\"Jul 2 2018\").getTime();",
 							"    pm.environment.set(\"dueDate\", datein );"
-						]
+						],
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -56,7 +101,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"listID\": {{listID}},\n\t\"description\": \"{{description}}\",\n\t\"dueDate\": {{dueDate}}\n\t\n}"
+					"raw": "{\n\t\"listID\": {{listID}},\n\t\"description\": \"{{description}}\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/list/item",

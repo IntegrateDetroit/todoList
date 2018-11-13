@@ -1,123 +1,118 @@
 {
 	"info": {
-		"_postman_id": "fbc7f374-7388-4f46-add7-94f257501f86",
+		"_postman_id": "1e06f969-cc3c-4934-9827-4840ec2cecf7",
 		"name": "24 Delete List",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "List Tests",
-			"item": [
+			"name": "24 Create List One",
+			"event": [
 				{
-					"name": "24 Create List One",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "c0903591-e522-4400-b045-35b0651a144f",
-								"type": "text/javascript",
-								"exec": [
-									"var _ = require(\"lodash\");",
-									"",
-									"pm.test(\"Status code is 201\", function () {",
-									"    pm.response.to.have.status(201);",
-									"});",
-									"",
-									"pm.test(\"Has properties\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    var listID = jsonData.listID;",
-									"    var title = jsonData.title;",
-									"    ",
-									"    pm.environment.set(\"id\", listID);",
-									"    ",
-									"    pm.expect(_.has(jsonData, \"listID\")).true;",
-									"});",
-									""
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"title\": \"{{title}}\"\n}"
-						},
-						"url": {
-							"raw": "http://localhost:8080/list/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"list",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "24 Delete List One",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "39a45f75-4fa4-4f49-884d-1001778ca818",
-								"type": "text/javascript",
-								"exec": [
-									"var _ = require(\"lodash\");",
-									"",
-									"pm.test(\"Status code is 410\", function () {",
-									"    pm.response.to.have.status(410);",
-									"});",
-									"",
-									"/*",
-									"pm.test(\"Has properties\", function () {",
-									"    var expectedEmail = pm.environment.get(\"email_address\");",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.eMail).to.equal(expectedEmail);",
-									"    pm.expect(_.has(jsonData, \"userID\")).true;",
-									"});*/"
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "DELETE",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"id\" : {{id}} \n}"
-						},
-						"url": {
-							"raw": "http://localhost:8080/list/{{id}}",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"list",
-								"{{id}}"
-							]
-						}
-					},
-					"response": []
+					"listen": "test",
+					"script": {
+						"id": "c0903591-e522-4400-b045-35b0651a144f",
+						"type": "text/javascript",
+						"exec": [
+							"var _ = require(\"lodash\");",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Has properties\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    var listID = jsonData.listID;",
+							"    var title = jsonData.title;",
+							"    ",
+							"    pm.environment.set(\"id\", listID);",
+							"    ",
+							"    pm.expect(_.has(jsonData, \"listID\")).true;",
+							"});",
+							""
+						]
+					}
 				}
-			]
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"{{title}}\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/list/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"list",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "24 Delete List One",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "39a45f75-4fa4-4f49-884d-1001778ca818",
+						"exec": [
+							"var _ = require(\"lodash\");",
+							"",
+							"pm.test(\"Status code is 410\", function () {",
+							"    pm.response.to.have.status(410);",
+							"});",
+							"",
+							"/*",
+							"pm.test(\"Has properties\", function () {",
+							"    var expectedEmail = pm.environment.get(\"email_address\");",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.eMail).to.equal(expectedEmail);",
+							"    pm.expect(_.has(jsonData, \"userID\")).true;",
+							"});*/"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\" : {{id}} \n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/list/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"list",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

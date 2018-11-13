@@ -1,158 +1,152 @@
 {
 	"info": {
-		"_postman_id": "7be54455-8396-4e19-8936-053cfcc069c7",
+		"_postman_id": "05844d2e-5b04-4661-9904-a41c548f3e85",
 		"name": "42_Create_List",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "CRUD Operations",
-			"description": null,
-			"item": [
+			"name": "42 Create List",
+			"event": [
 				{
-					"name": "Create List",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "08d184ac-5778-427f-ba6e-51a4d88e4c45",
-								"type": "text/javascript",
-								"exec": [
-									"var _ = require(\"lodash\");",
-									"",
-									"pm.test(\"Status code is 201\", function () {",
-									"    pm.response.to.have.status(201);",
-									"});",
-									"",
-									"",
-									"pm.test(\"Has properties\", function () {",
-									"    var expectedTitle = pm.environment.get(\"title\");",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.title).to.equal(expectedTitle);",
-									"    pm.expect(_.has(jsonData, \"listID\")).true;",
-									"    ",
-									"    pm.environment.set(\"listID\", jsonData.listID);",
-									"});",
-									"",
-									""
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"title\": \"{{title}}\"\n}"
-						},
-						"url": {
-							"raw": "http://localhost:8080/list",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"list"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get List",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "84248fc1-a48b-4566-be60-a72bdb063144",
-								"type": "text/javascript",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"",
-									"",
-									"",
-									"pm.test(\"Returned list has same listID\", function () {",
-									"    var expectedTitle = pm.environment.get(\"title\");",
-									"    var jsonData = pm.response.json();",
-									"    var expectedID = pm.environment.get(\"listID\");",
-									"    pm.expect(jsonData.listID).to.eql(expectedID);",
-									"    pm.expect(jsonData.title).to.equal(expectedTitle);",
-									"",
-									"});"
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:8080/list/{{listID}}",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"list",
-								"{{listID}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get List",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "693b4a6d-66f0-40f6-9db3-38e815fdd0fa",
-								"type": "text/javascript",
-								"exec": [
-									"pm.test(\"Status code is 204\", function () {",
-									"    pm.response.to.have.status(204);",
-									"});"
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:8080/list/40000000",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"list",
-								"40000000"
-							]
-						}
-					},
-					"response": []
+					"listen": "test",
+					"script": {
+						"id": "08d184ac-5778-427f-ba6e-51a4d88e4c45",
+						"type": "text/javascript",
+						"exec": [
+							"var _ = require(\"lodash\");",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Has properties\", function () {",
+							"    var expectedTitle = pm.environment.get(\"title\");",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.title).to.equal(expectedTitle);",
+							"    pm.expect(_.has(jsonData, \"listID\")).true;",
+							"    ",
+							"    pm.environment.set(\"listID\", jsonData.listID);",
+							"});",
+							"",
+							""
+						]
+					}
 				}
-			]
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"{{title}}\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "42 Get List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "693b4a6d-66f0-40f6-9db3-38e815fdd0fa",
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {",
+							"    pm.response.to.have.status(204);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/list/40000000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"list",
+						"40000000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "42 Get List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "84248fc1-a48b-4566-be60-a72bdb063144",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"",
+							"pm.test(\"Returned list has same listID\", function () {",
+							"    var expectedTitle = pm.environment.get(\"title\");",
+							"    var jsonData = pm.response.json();",
+							"    var expectedID = pm.environment.get(\"listID\");",
+							"    pm.expect(jsonData.listID).to.eql(expectedID);",
+							"    pm.expect(jsonData.title).to.equal(expectedTitle);",
+							"",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/list/{{listID}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"list",
+						"{{listID}}"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "4555775f-77c3-4d68-a4e9-d04103640b30",
+		"_postman_id": "03189506-6c3e-4799-8e54-ee1d40f1e6c2",
 		"name": "15_10_Add_Item",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -9,10 +9,17 @@
 			"name": "15 10 Create List",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": ""
+					"raw": "{\n\t\"title\": \"new list\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/list",
@@ -44,13 +51,11 @@
 							"pm.test(\"Item added with given list ID and description\", function () {",
 							"    var description = pm.environment.get(\"description\");",
 							"    var listID = parseInt(pm.environment.get(\"listID\"));",
-							"    var dueDate = parseInt(pm.environment.get(\"dueDate\"));",
 							"    ",
 							"    var jsonData = pm.response.json();",
 							"    ",
 							"    pm.expect(jsonData.listID).to.equal(listID);",
 							"    pm.expect(jsonData.description).to.equal(description);",
-							"    pm.expect(jsonData.dueDate).to.equal(dueDate);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -78,7 +83,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"listID\": {{listID}},\n\t\"description\": \"{{description}}\",\n\t\"dueDate\": {{dueDate}}\n}"
+					"raw": "{\n\t\"listID\": {{listID}},\n\t\"description\": \"{{description}}\"\n\t\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/list/item",

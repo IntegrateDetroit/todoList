@@ -1,168 +1,163 @@
 {
 	"info": {
-		"_postman_id": "82e8a1de-f22e-4a5a-a3ce-50cf4e913a68",
+		"_postman_id": "25167840-3bcd-410b-b0f3-d13feb9ff4dd",
 		"name": "17 _Update List Title",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Update List Title",
-			"item": [
+			"name": "17 Edit NonExistant List",
+			"event": [
 				{
-					"name": "17 Not Updated List",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "900405fa-4769-42fc-b372-6d2dadf9d3e6",
-								"type": "text/javascript",
-								"exec": [
-									"pm.test(\"Status code is 304\", function () {",
-									"    pm.response.to.have.status(304);",
-									"});",
-									"",
-									""
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"updatedTitle\": \"{{updatedTitle}}\"\n}"
-						},
-						"url": {
-							"raw": "http://localhost:8080/list/220000",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"list",
-								"220000"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "17 Create List",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "da002adf-d0a2-4aeb-babd-10b5b3c50769",
-								"type": "text/javascript",
-								"exec": [
-									"var _ = require(\"lodash\");",
-									"",
-									"pm.test(\"Status code is 201\", function () {",
-									"    pm.response.to.have.status(201);",
-									"});",
-									"",
-									"pm.test(\"Has properties\", function () {",
-									"    var jsonData = pm.response.json();",
-									"    var listID = jsonData.listID;",
-									"    var title = jsonData.title;",
-									"    ",
-									"    pm.environment.set(\"id\", listID);",
-									"    ",
-									"    pm.expect(_.has(jsonData, \"listID\")).true;",
-									"});",
-									"",
-									""
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"title\": \"{{title}}\"\n}"
-						},
-						"url": {
-							"raw": "http://localhost:8080/list/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"list",
-								""
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "17 Update List",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "760d07c7-df9f-4a38-a999-492d0889a3d1",
-								"type": "text/javascript",
-								"exec": [
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});",
-									"",
-									"pm.test(\"Has properties\", function () {",
-									"    var updatedTitle = pm.environment.get(\"updatedTitle\");",
-									"    var id = pm.environment.get(\"id\");",
-									"    var jsonData = pm.response.json();",
-									"    pm.expect(jsonData.title).to.equal(updatedTitle);",
-									"});",
-									"",
-									""
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n  \"updatedTitle\": \"{{updatedTitle}}\"\n}"
-						},
-						"url": {
-							"raw": "http://localhost:8080/list/{{id}}",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"list",
-								"{{id}}"
-							]
-						}
-					},
-					"response": []
+					"listen": "test",
+					"script": {
+						"id": "900405fa-4769-42fc-b372-6d2dadf9d3e6",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 304\", function () {",
+							"    pm.response.to.have.status(304);",
+							"});",
+							"",
+							""
+						]
+					}
 				}
-			]
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"updatedTitle\": \"{{updatedTitle}}\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/list/220000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"list",
+						"220000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "17 Create List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "da002adf-d0a2-4aeb-babd-10b5b3c50769",
+						"type": "text/javascript",
+						"exec": [
+							"var _ = require(\"lodash\");",
+							"",
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"",
+							"pm.test(\"Has properties\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    var listID = jsonData.listID;",
+							"    var title = jsonData.title;",
+							"    ",
+							"    pm.environment.set(\"id\", listID);",
+							"    ",
+							"    pm.expect(_.has(jsonData, \"listID\")).true;",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"{{title}}\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/list/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"list",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "17 Update List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "760d07c7-df9f-4a38-a999-492d0889a3d1",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Has properties\", function () {",
+							"    var updatedTitle = pm.environment.get(\"updatedTitle\");",
+							"    var id = pm.environment.get(\"id\");",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.title).to.equal(updatedTitle);",
+							"});",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"updatedTitle\": \"{{updatedTitle}}\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/list/{{id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"list",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }

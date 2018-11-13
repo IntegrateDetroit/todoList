@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8a1ec961-78ef-468e-a5f3-86c29a18684e",
+		"_postman_id": "0c49512b-2f45-42d6-bf2a-67c559a89588",
 		"name": "8_User Tests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -144,7 +144,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"firstName\": \"{{first_name2}}\" ,\n  \"lastName\": \"{{last_name2}}\" ,\n  \"eMail\": \"{{email_address2}}\" ,\n  \"passwordHash\": \"{{password2b}}\" ,\n  \"signupDate\": \"{{signup_date2b}}\"\n\t\n}"
+					"raw": "{\n  \"firstName\": \"{{first_name}}\" ,\n  \"lastName\": \"{{last_name}}\" ,\n  \"eMail\": \"{{email_address}}\" ,\n  \"passwordHash\": \"{{password}}\" ,\n  \"signupDate\": \"{{signup_date}}\"\n\t\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/user",
