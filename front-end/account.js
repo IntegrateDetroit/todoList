@@ -36,7 +36,7 @@ function create_user(){
         signupDate: signupDate 
       }
       //console.log(JSON.stringify(data));
-      userrequest.post(data, "http://localhost:8080/user");
+      user.createUser_post(data, "http://localhost:8080/user");
 }
 
 

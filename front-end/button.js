@@ -1,6 +1,6 @@
 const buttonHandler = async () => {
   var listTitle = document.querySelector("#titleInput").value
-  await request.post({title: listTitle}, "http://localhost:8080/list", card.createListCard, cback);
+  await list.createList_post({title: listTitle}, "http://localhost:8080/list", card.createListCard, cback);
   initialize();
 }
 

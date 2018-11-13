@@ -14,54 +14,46 @@
   <script defer src="js/vendor/what-input.js"></script>
   <script defer src="js/vendor/foundation.js"></script>
   <script defer src="js/app.js"></script>
-  <!-- <script defer src="js/vendor/card.js"></script> -->
-  <script src="./api.js"></script>
-  <!-- <script src="./button.js"></script> -->
-  <script src="./js/vendor/account.js"></script>
+  <script defer src="./helper.js"></script>
+  <script defer src="./user_requests.js"></script>
+  <script defer src="./list_requests.js"></script>
+  <script defer src="./account.js"></script>
 </head>
 
 <body>
   <div class="mobile-nav-bar title-bar">
     <div class="title-bar-left">
 
-        <ul class="dropdown menu" data-dropdown-menu>
-            <li class="is-dropdown-submenu-parent">
-                <a href="#">
-                    <img src="./resources/hamburgerMenu.svg">ToDo
-                </a>
-              <ul class="menu">
-                <li><a href="./account.html">Log-In / Create Account</a></li>
-              </ul>
-              </li>
-         </ul>
-
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li class="is-dropdown-submenu-parent">
+          <a href="#">
+            <img src="./resources/hamburgerMenu.svg">ToDo
+          </a>
+          <ul class="menu">
+            <li><a href="./account.html">Log-In / Create Account</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
 
-   
-
-
-
-  <div class="sign-up" >
+    <div class="sign-up">
       <p class="sign-up-header">Sign Up</p>
-    <form class="sign-up-form" onsubmit="submit_click();">
-      <label class="sign-up-label">first name: </label>
-      <input type="text" required id="fname"/>
-      <label class="sign-up-label">last name: </label>
-      <input type="text" required id="lname"/>
-      <label class="sign-up-label">email: </label>
-      <input type="email" required id="eMail"/>
-      <label class="sign-up-label">password: </label>
-      <input type="password" required id="passwordOne"/>
-      <label class="sign-up-label">confirm password: </label>
-      <input type="password" required id="passwordTwo" title="Passwords dont match!"
-      data-tooltip class="has-tip right" 
-      data-disable-hover="true" data-click-open="false"
-      onkeyup="validate_passwords();"/>
+      <form class="sign-up-form" onsubmit="submit_click();">
+        <label class="sign-up-label">first name: </label>
+        <input type="text" required id="fname" />
+        <label class="sign-up-label">last name: </label>
+        <input type="text" required id="lname" />
+        <label class="sign-up-label">email: </label>
+        <input type="email" required id="eMail" />
+        <label class="sign-up-label">password: </label>
+        <input type="password" required id="passwordOne" />
+        <label class="sign-up-label">confirm password: </label>
+        <input type="password" required id="passwordTwo" title="Passwords dont match!" data-tooltip class="has-tip right"
+          data-disable-hover="true" data-click-open="false" onkeyup="validate_passwords();" />
 
-      <button type="submit" class="secondary button" id="sign-up-button" >Sign up!</button>
+        <button type="submit" class="secondary button" id="sign-up-button">Sign up!</button>
 
-    </form>
-  </div>
+      </form>
+    </div>
 </body>
-
 </html>

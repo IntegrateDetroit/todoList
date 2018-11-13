@@ -7,7 +7,7 @@ QUnit.test("list title field initially 'Enter title here'", function() {
 });
 
 QUnit.test("button click sends information to DB", function() {
-  var spy = sinon.spy(request, "post");
+  var spy = sinon.spy(list, 'createList_post');
   const input = document.querySelector('#titleInput');
 
   var expectedTitle = "this is new title";
@@ -19,7 +19,7 @@ QUnit.test("button click sends information to DB", function() {
 });
 
 QUnit.test("button click sends updated title to DB", async function() {
-  var spy = sinon.spy(request, "post");
+  var spy = sinon.spy(list, 'createList_post');
   //create a list
   var idForList = 3
   currId = idForList
