@@ -1,68 +1,12 @@
 {
 	"info": {
-		"_postman_id": "22548131-b690-4752-9cad-2de8fdf19151",
+		"_postman_id": "8a1ec961-78ef-468e-a5f3-86c29a18684e",
 		"name": "8_User Tests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Delete User One",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "39a45f75-4fa4-4f49-884d-1001778ca818",
-						"exec": [
-							"/*var _ = require(\"lodash\");",
-							"",
-							"pm.test(\"Status code is 410\", function () {",
-							"    pm.response.to.have.status(410);",
-							"});",
-							"",
-							"",
-							"pm.test(\"Has properties\", function () {",
-							"    var expectedEmail = pm.environment.get(\"email_address\");",
-							"    var jsonData = pm.response.json();",
-							"    pm.expect(jsonData.eMail).to.equal(expectedEmail);",
-							"    pm.expect(_.has(jsonData, \"userID\")).true;",
-							"    ",
-							"    pm.environment.unset(\"email_address\");",
-							"}); */"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"firstName\": \"{{first_name}}\" ,\n  \"lastName\": \"{{last_name}}\" ,\n  \"eMail\": \"{{email_address}}\" ,\n  \"paswordHash\": \"{{password}}\" ,\n  \"signupDate\": \"{{signup_date}}\"\n}"
-				},
-				"url": {
-					"raw": "http://localhost:8080/user/email/{{email_address}}",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"user",
-						"email",
-						"{{email_address}}"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create User One",
+			"name": "8 Create User One",
 			"event": [
 				{
 					"listen": "test",
@@ -116,7 +60,7 @@
 			"response": []
 		},
 		{
-			"name": "Get User One",
+			"name": "8 Get User One",
 			"event": [
 				{
 					"listen": "test",
@@ -171,7 +115,7 @@
 			"response": []
 		},
 		{
-			"name": "Can't Create User Twice",
+			"name": "8 Can't Create User Twice",
 			"event": [
 				{
 					"listen": "test",
@@ -211,6 +155,62 @@
 					"port": "8080",
 					"path": [
 						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "8 Delete User One",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "39a45f75-4fa4-4f49-884d-1001778ca818",
+						"exec": [
+							"/*var _ = require(\"lodash\");",
+							"",
+							"pm.test(\"Status code is 410\", function () {",
+							"    pm.response.to.have.status(410);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Has properties\", function () {",
+							"    var expectedEmail = pm.environment.get(\"email_address\");",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.eMail).to.equal(expectedEmail);",
+							"    pm.expect(_.has(jsonData, \"userID\")).true;",
+							"    ",
+							"    pm.environment.unset(\"email_address\");",
+							"}); */"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"firstName\": \"{{first_name}}\" ,\n  \"lastName\": \"{{last_name}}\" ,\n  \"eMail\": \"{{email_address}}\" ,\n  \"paswordHash\": \"{{password}}\" ,\n  \"signupDate\": \"{{signup_date}}\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/email/{{email_address}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"email",
+						"{{email_address}}"
 					]
 				}
 			},
