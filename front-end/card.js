@@ -114,17 +114,15 @@ var card = {
         )
 
         editTitleButton.style["display"]="inline"
-
+        list.updateTitle_put({title: cardTitle.value}, "http://localhost:8080/list");
+        console.log('inside actionlistener for blur')
       }
     )
 
     
 
 
-    const card = document.querySelector("#"+cardId);
-    // card.addEventListener('click', function (e) {
-    //   card.remove()
-    //   })
+    
     currId++;
   }
 

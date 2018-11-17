@@ -15,5 +15,23 @@ const list =  {createList_post: async function(data, url, successCallback){
     });
   } else if (response.status === 304) {
   }
+},
+updateTitle_put: async function(data, url, successCallback){
+  let response = await fetch(
+    url, {
+      body: JSON.stringify(data),
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+  if (response.status === 200) {
+    response.json().then(function (body) {
+      console.log("in the success case of updating title")
+  
+    });
+  } else if (response.status === 304) {
+  }
 }
 }
