@@ -16,7 +16,7 @@ const list =  {createList_post: async function(data, url, successCallback){
   } else if (response.status === 304) {
   }
 },
-updateTitle_put: async function(data, url, successCallback){
+updateTitle_put: async function(data, url, failureCallback, oldTitle, titleId){
   let response = await fetch(
     url, {
       body: JSON.stringify(data),
@@ -26,12 +26,14 @@ updateTitle_put: async function(data, url, successCallback){
         'Content-Type': 'application/json'
       }
     })
-  if (response.status === 200) {
+    
+    console.log("we are in update title")
+    if (response.status === 200) {
     response.json().then(function (body) {
-      console.log("in the success case of updating title")
   
     });
   } else if (response.status === 304) {
+    failureCallback(oldTitle, titleId)
   }
 }
 }

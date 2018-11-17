@@ -1,5 +1,4 @@
 
-
 QUnit.test("list title field initially 'Enter title here'", function() {
   const input = document.querySelector('#titleInput');
 
@@ -136,7 +135,6 @@ QUnit.test("when editing the list title if bad response title is not updated in 
       setTimeout(() => resolve(), 500)
     })
 
- 
   //grab the h6, update value
   var title = document.querySelector(`#title${idForList}`)
   ok(title.getAttribute('contenteditable'))
@@ -147,7 +145,6 @@ QUnit.test("when editing the list title if bad response title is not updated in 
   title.value = updatedTitle;
   //title.innerText = updatedTitle
   title.blur()
-
 
   //verify that request to backend was sent.
   equal(spy.args[0][0].title, updatedTitle, "title was updated");

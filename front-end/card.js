@@ -1,4 +1,5 @@
 
+let oldTitle;
 var card = {
   createListCard: function (newCardId, newTitle) {
     let cardId = "list" + currId;
@@ -97,6 +98,7 @@ var card = {
     editTitleButton.addEventListener(
       'click',
       ( event ) => {
+        oldTitle = cardTitle.value
         cardTitle.setAttribute(
           "contenteditable", "true"
         )
@@ -114,7 +116,7 @@ var card = {
         )
 
         editTitleButton.style["display"]="inline"
-        list.updateTitle_put({title: cardTitle.value}, "http://localhost:8080/list");
+        list.updateTitle_put({title: cardTitle.value}, "http://localhost:8080/list", card.setTitle, oldTitle, cardTitle.id);
         console.log('inside actionlistener for blur')
       }
     )
@@ -122,8 +124,13 @@ var card = {
     
 
 
-    
     currId++;
+  },
+  setTitle: function (title, cardId){
+
+    var titleElement = document.querySelector(`#${cardId}`)
+    titleElement.innerText = title
+
   }
 
 };
