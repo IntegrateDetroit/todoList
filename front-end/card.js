@@ -97,14 +97,15 @@ var card = {
         editTitleButton.style["display"]="none"
         cardTitle.focus()
       })
-
+      
     cardTitle.addEventListener('click', (event) => {
         cardTitle.setAttribute("contenteditable", "false")
         editTitleButton.style["display"]="inline"
         let id = cardTitle.id.substring(5)
         let url = `http://localhost:8080/list/${id}`
         console.log('click to edit ' + oldTitle)
-        list.updateTitle_put({title: cardTitle.value}, url, card.setTitle, oldTitle, cardTitle.id);
+
+        list.updateTitle_put({updatedTitle: cardTitle.innerHTML}, url, card.setTitle, oldTitle, cardTitle.id);
       }
     )
     currId++;
