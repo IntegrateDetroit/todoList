@@ -58,6 +58,7 @@ QUnit.test("Clicking the Edit title button sends the updated list title to list 
 
 QUnit.test("when editing the list title if bad response title is not updated in DB", async function () {
   var spy = sinon.spy(list, 'updateTitle_put');
+  var alertSpy = sinon.spy(window, 'alert');
   //create a list
   var idForList = 5
   currId = idForList
@@ -108,10 +109,16 @@ QUnit.test("when editing the list title if bad response title is not updated in 
     equal(title.value, listTitleEntered)
     setTimeout(() => resolve(), 500)
   })
+
+  equal(alertSpy.called, true)
   spy.restore();
   stub.restore();
 
 });
+
+
+
+
 
 /* ------------- WIP test failing after api.js code refactor.  -------------- */
 QUnit.test("User input entered populates list title on card after button click", function (assert) {
@@ -188,3 +195,4 @@ createList = async function (listTitle) {
     })
   stub.restore()
 }
+
