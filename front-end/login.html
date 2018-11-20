@@ -23,11 +23,8 @@
 </head>
 
 <body>
-  
   <div class="mobile-nav-bar title-bar">
     <div class="title-bar-left">
-         
-     
         <ul class="dropdown menu" data-dropdown-menu>
             <li class="is-dropdown-submenu-parent">
                 <a href="#">
@@ -36,9 +33,25 @@
               <ul class="menu">
                 <li><a href="./account.html">Log-In / Create Account</a></li>
               </ul>
-              </li>
+            </li>
          </ul>
+
+
+
+          <form class="sign-up-form" onsubmit="submit_click();">
+            <label class="sign-up-label">email: </label>
+            <input type="email" required id="eMail" />
+            <label class="sign-up-label">password: </label>
+            <input type="password" required id="passwordOne" />
+            <button type="submit" class="secondary button" id="sign-up-button">Sign up!</button>
+          </form>
+
+
     </div>
+  </div>  
+
 </body>
 
 </html>
+
+
