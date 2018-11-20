@@ -1,9 +1,9 @@
 
+let oldTitle;
 var card = {
   createListCard: function (newCardId, newTitle) {
     let cardId = "list" + currId;
     
-    //create the card 
     let todoCard = document.createElement('div')
     todoCard.id = cardId 
     todoCard.classList.add('grid-x', 'grid-padding-x')
@@ -17,8 +17,6 @@ var card = {
     todoCard.appendChild( todoCardOutterContainer )
     todoCardOutterContainer.appendChild( todoCardInnerContainer )
     
-    //create the title
-    //create the archive button
     let cardDivider = document.createElement('div')
     cardDivider.classList.add('card-divider')
 
@@ -36,8 +34,6 @@ var card = {
     editTitleButton.style[ 'padding-left' ] = '10px'
     editTitleButton.style[ 'padding-bottom' ] = '15px'
     editTitleButton.id = `editTitleButton${currId}`
-
-    console.log('created editTitleButton')
 
     let titlePen = document.createElement( 'img' )
     titlePen.src = './resources/pen-solid.svg'
@@ -90,42 +86,36 @@ var card = {
 
     addItemButton.addEventListener(
       'click',
-      ( event ) => {
-        alert( 'ouch!' )
+      (event) => {
+        alert('ouch!')
       })
 
-    editTitleButton.addEventListener(
-      'click',
-      ( event ) => {
-        cardTitle.setAttribute(
-          "contenteditable", "true"
-        )
-
+    editTitleButton.addEventListener('click', (event) => {
+        oldTitle = cardTitle.innerHTML
+        console.log('clicked in ' + oldTitle)
+        cardTitle.setAttribute("contenteditable", "true")
         editTitleButton.style["display"]="none"
         cardTitle.focus()
-
       })
-
-    cardTitle.addEventListener(
-      'blur',
-      ( event ) => {
-        cardTitle.setAttribute(
-          "contenteditable", "false"
-        )
-
+      
+    cardTitle.addEventListener('click', (event) => {
+        cardTitle.setAttribute("contenteditable", "false")
         editTitleButton.style["display"]="inline"
+        let id = cardTitle.id.substring(5)
+        let url = `http://localhost:8080/list/${id}`
+        console.log('click to edit ' + oldTitle)
 
+        list.updateTitle_put({updatedTitle: cardTitle.innerHTML}, url, card.setTitle, oldTitle, cardTitle.id);
       }
     )
-
-    
-
-
-    const card = document.querySelector("#"+cardId);
-    // card.addEventListener('click', function (e) {
-    //   card.remove()
-    //   })
     currId++;
+  },
+
+  
+  setTitle: function (title, cardId){
+    console.log('setting title ' + title)
+    var titleElement = document.querySelector(`#${cardId}`)
+    titleElement.innerHTML = title
   }
 
 };
